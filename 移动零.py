@@ -4,9 +4,9 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         n = len(nums)
-        left = right = 0
-        while right < n:
+        right = 0
+        left = 0
+        for right in range(n):
             if nums[right] != 0:
-                nums[left],nums[right] = nums[right],nums[left]
-                left += 1 # find 0,put it in where left is, then move left foeward by 1
-            right += 1 # next right
+                nums[right],nums[left] = nums[left],nums[right]
+                left += 1
