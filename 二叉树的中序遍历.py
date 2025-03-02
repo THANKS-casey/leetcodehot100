@@ -46,3 +46,19 @@ res.append(node.val)         # 最后处理当前节点
 
 所以，为了实现中序遍历（左->中->右），我们必须把 `res.append(node.val)` 放在处理完左子树之后，处理右子树之前。
 '''
+
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]: #主框架 中间的处理过程塞到了一个自定义的函数dfs里
+        res = []
+        self.dfs(root,res) #root是根，代表最上面的那个起点
+        return res
+
+    def dfs(self,node:Optional[TreeNode],res:List) -> None: # node为节点，作为普适代表
+        if node is not None: # 注意这里不是while while会无限循环，因为这里的递归是通过函数内部调用函数实现的，所以整个dfs函数自带循环，不用自己再while了，只需要用if判断一下最基本的条件就行了
+            self.dfs(node.left,res) # 在类内部调用函数记得加类的前缀
+            res.append(node.val) # 注意这里列表保存的是二叉树节点的值，如果用
+            self.dfs(node.right,res)
+
+        else:
+            return None
+
