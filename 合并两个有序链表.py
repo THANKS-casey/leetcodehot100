@@ -10,3 +10,16 @@ class Solution:
         else:
             l2.next = self.mergeTwoLists(l1,l2.next)
             return l2
+
+class Solution:
+    def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        if l1 is None:
+            return l2
+        elif l2 is None:
+            return l1
+        elif l1.val < l2.val:
+            l1.next = self.mergeTwoLists(l1.next,l2) # 因为不同类里可能有相同名字的函数，所以这里我们需要声明一下，我们这里要的mergeTwoLists函数是self这个类里的
+            return l1
+        elif l1.val > l2.val:
+            l2.next = self.mergeTwoLists(l1,l2.next)
+            return l2
