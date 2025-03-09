@@ -2,7 +2,7 @@ class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         if not intervals: # 如果题目列表为空，返回空列表
             return []
-        intervals.sort(lambda x:x[0]) # 对题目所给列表内列表排序，确保排序后左边的左端点永远是最小的，在出现重叠时，左端点永远不用更新，只用更新右端点
+        intervals.sort(key=lambda x:x[0]) # 对题目所给列表内列表排序，确保排序后左边的左端点永远是最小的，在出现重叠时，左端点永远不用更新，只用更新右端点
         result = [intervals[0]] # 刚开始result为空列表时不能根据索引读取，所以需要先把intervals[0]这项塞给result
         for interval in intervals[1:]: # intervals[0]已经塞到result做最初值了，所以后续比较从intervals[1]开始就行
 
